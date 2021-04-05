@@ -124,3 +124,20 @@ if(e.target.classList[1] ==='fa-trash-alt'){
     e.target.parentElement.parentElement.style.borderColor = '#fff';
 }
 };
+
+// Adding current date 
+
+const d = new Date();
+const year = document.getElementById('year');
+const month = document.getElementById('month');
+const day = document.getElementById('day');
+const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+month.innerHTML = months[d.getMonth()];
+year.innerHTML = d.getUTCFullYear();
+// add 0 before (1 number) day  
+if(d.getDate().toString().length == 1){
+    day.innerHTML = '0' + d.getDate().toString(); 
+}else{
+    day.innerHTML = d.getDate().toString();
+};
