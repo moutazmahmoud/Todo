@@ -14,42 +14,44 @@
     <header>
         <h1 class="text-focus-in">Todo List<span>By Moutaz M.</span></h1>
     </header>
-    <section class="name-sec">
-        <div class="img-date">
-            <img src="./images/sunset-3325080_1280.jpg" alt="">
-            <div class="overlay-date">
-                <h2>Hello <Strong id="name"></Strong>,
-                    Today is </h2>
-                <ul>
-                    <li> <span id="day"></span> <span id="month"></span></li>
-                    <hr>
-                    <li id="year"></li>
-                </ul>
+    <div class="cont">
+        <section class="name-sec">
+            <div class="img-date">
+                <img src="./images/sunset-3325080_1280.jpg" alt="">
+                <div class="overlay-date">
+                    <h2 class='tracking-in-expand '>Hello <Strong id="name"></Strong>,</h2>
+                    <ul>
+                        <li> <span id="day"></span> <span id="month"></span></li>
+                        <hr>
+                        <li id="year"></li>
+                    </ul>
+                </div>
             </div>
-        </div>
-        
-    </section>
-    <section class="task-sec">
-         <!-- Add Name -->
-        <form class="name">
-            <input id="nameinput" type="text" placeholder="Please Enter Your Name" minlength="3" maxlength="20" required>
-            <button id="confirm">Confirm</button>
-        </form>
-        <!-- Add task -->
-        <form class="add-task">
-            <input id="task-name" type="text" placeholder="Add New Task" pattern="[A-Za-z]">
-            <button class="add-btn" id="add-btn"><i class="fas fa-plus"></i></button>    
-        </form>
-
-        <ul class="tasks">
-             <h2>My Tasks</h2> 
-            <!-- <li class="task"><i class="fas fa-check-circle"></i><span>Html</span><div class="click"><i class="fas fa-trash-alt"></i></div
-                ></li>
-            <li class="task"><i class="fas fa-check-circle"></i><span>Css</span><div class="click"><i class="fas fa-trash-alt"></i></div></li>
-            <li class="task"><i class="fas fa-check-circle"></i><span>JavaScript</span><div class="click"><i class="fas fa-trash-alt"></i></div></li> -->
-        </ul>
-        
-    </section>
+            
+        </section>
+        <section class="task-sec">
+             <!-- Add Name -->
+            <form class="name">
+                <input id="nameinput" type="text" placeholder="Please Enter Your Name" minlength="3" maxlength="20" required>
+                <button id="confirm">Confirm</button>
+            </form>
+            <!-- Add task -->
+            <form class="add-task">
+                <input id="task-name" type="text" placeholder="Add New Task" pattern="[A-Za-z]">
+                <button class="add-btn" id="add-btn"><i class="fas fa-plus"></i></button>    
+            </form>
+    
+            <ul class="tasks">
+                 <h2>My Tasks</h2> 
+                <!-- <li class="task"><i class="fas fa-check-circle"></i><span>Html</span><div class="click"><i class="fas fa-trash-alt"></i></div
+                    ></li>
+                <li class="task"><i class="fas fa-check-circle"></i><span>Css</span><div class="click"><i class="fas fa-trash-alt"></i></div></li>
+                <li class="task"><i class="fas fa-check-circle"></i><span>JavaScript</span><div class="click"><i class="fas fa-trash-alt"></i></div></li> -->
+            </ul>
+            
+        </section>
+    </div>
+    
     <script src="./script.js">
     </script>
 </body>
