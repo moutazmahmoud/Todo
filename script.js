@@ -132,22 +132,30 @@ document.getElementById('add-btn').addEventListener('click', ()=>{
 
 
 
-// Remove Task
+// Remove-check Task
+
 tasks.addEventListener('mouseover', redborder);
 tasks.addEventListener('mouseout', whiteborder);
 tasks.addEventListener('click', checkremove);
 
 function checkremove(e){
 if(e.target.classList[1] ==='fa-trash-alt'){
+    e.target.parentElement.parentElement.classList.add('swing-out-top-bck');
+setTimeout(()=>{
     e.target.parentElement.parentElement.remove();
     let todosu = JSON.parse(localStorage.getItem('todos'));
     todosu.splice(todosu.indexOf(e.target.parentElement.previousSibling.innerText),1);
-    localStorage.setItem('todos', JSON.stringify(todosu));   
+    localStorage.setItem('todos', JSON.stringify(todosu));
+} ,700);
+       
 }else if (e.target.classList[1] ==='fa-check-circle'){
     e.target.classList.toggle('checked2');
     e.target.nextSibling.classList.toggle('checked') ;
 }
 };
+
+// styling
+
 function redborder(e){
 if(e.target.classList[1] ==='fa-trash-alt'){
     e.target.parentElement.parentElement.style.borderColor = 'rgb(202, 45, 45)';
