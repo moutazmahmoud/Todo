@@ -145,7 +145,7 @@ if(e.target.classList[1] ==='fa-trash-alt'){
     localStorage.setItem('todos', JSON.stringify(todosu));   
 }else if (e.target.classList[1] ==='fa-check-circle'){
     e.target.classList.toggle('checked2');
-    e.target.nextElementSibling.classList.toggle('checked') = ';'
+    e.target.nextSibling.classList.toggle('checked') ;
 }
 };
 function redborder(e){
