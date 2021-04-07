@@ -2,9 +2,16 @@
 const nametxt = document.getElementById('name');
 const namediv = document.querySelector('.name');
 const tasksect = document.querySelector('.add-task');
+const tasks = document.querySelector('.tasks');
 
 
 // Functions
+
+const capitalize = (nam) => {
+    return(nam.charAt(0).toUpperCase() + nam.slice(1));
+    
+}
+
 
 const addName = () =>{
     const confirmBtn = document.getElementById('confirm');
@@ -18,7 +25,7 @@ const addName = () =>{
             if(newname.length > 2) {
                 var letters = /^[A-Za-z]+$/;
                 if(newname.match(letters)){
-                    nametxt.textContent = newname; 
+                    nametxt.textContent = capitalize(newname) ; 
                     namediv.style.height = '0';
                     tasksect.style.display = 'flex';
                     localStorage.setItem('name',newname);
@@ -45,12 +52,49 @@ const addName = () =>{
 
 };
 
+const addTask = (newTask) =>{
+    
+        if(newTask != ''){
+            const tasks = document.querySelector('.tasks');
+            const taskInput = document.getElementById('task-name');
+            const newTaskLi = document.createElement('li');
+            const newTaskSpan = document.createElement('span');
+            const newTaskdiv = document.createElement('div');
+            const newTaskI = document.createElement('i');
+            
+            newTaskI.classList.add('fas');
+            newTaskI.classList.add('fa-check-circle');
+            newTaskdiv.innerHTML = '<i class="fas fa-trash-alt"></i>';
+            newTaskdiv.classList.add('click');
+            newTaskSpan.innerText = newTask;
+            newTaskLi.appendChild(newTaskI);
+            newTaskLi.appendChild(newTaskSpan);
+            newTaskLi.appendChild(newTaskdiv);
+            newTaskLi.classList.add('task');
+            tasks.appendChild(newTaskLi);
+            taskInput.value = '';
+            
+        }
+        
+   
+};
+
+
 // Check Localstorage Name
 
 if (localStorage.getItem('name')) {
-    nametxt.textContent = localStorage.getItem('name');
+    nametxt.textContent = capitalize(localStorage.getItem('name')) ;
     namediv.style.display = 'none';
     tasksect.style.display = 'flex';
+    if(localStorage.getItem('todos')){
+         let todos = JSON.parse(localStorage.getItem('todos'));
+         let i ;
+         console.log(todos.length);
+        for ( i = 0 ; i < todos.length; i++ ) {
+            addTask(todos[i]);
+        };
+    }
+
 
 } else {
     // add user name to app
@@ -70,34 +114,21 @@ document.querySelectorAll('form').forEach((form)=>{
     })
 })
 // Add New task
-const tasks = document.querySelector('.tasks');
 
-document.getElementById('add-btn').addEventListener('click',() =>{
-        const taskName = document.getElementById('task-name');
-        if(taskName.value != ''){
-            const tasks = document.querySelector('.tasks');
-            const newTaskLi = document.createElement('li');
-            const newTaskSpan = document.createElement('span');
-            const newTaskDiv = document.createElement('div');
-            const newTaskIC = document.createElement('i');
-            const newTaskIT = document.createElement('i');
-            newTaskIC.classList.add('fas');
-            newTaskIC.classList.add('fa-check-circle');
-            newTaskIT.classList.add('fas');
-            newTaskIT.classList.add('fa-trash-alt');
-            newTaskSpan.innerText = taskName.value;
-            newTaskDiv.appendChild(newTaskIT);
-            newTaskDiv.classList.add('click');
-            newTaskLi.appendChild(newTaskIC);
-            newTaskLi.appendChild(newTaskSpan);
-            newTaskLi.appendChild(newTaskDiv);
-            newTaskLi.classList.add('task');
-            tasks.appendChild(newTaskLi);
-            taskName.value = '';
-            taskName.placeholder = 'Add More ';
-        }
-        
-    });
+document.getElementById('add-btn').addEventListener('click', ()=>{
+    const task = document.getElementById('task-name').value;
+    addTask(task);
+    let todosu ;
+    if(localStorage.getItem('todos')){
+
+        todosu = JSON.parse(localStorage.getItem('todos'));
+
+    }else{
+        todosu = [];
+    }
+    todosu.push(task);
+    localStorage.setItem( 'todos' , JSON.stringify(todosu));
+});
 
 
 
@@ -109,6 +140,9 @@ tasks.addEventListener('click', checkremove);
 function checkremove(e){
 if(e.target.classList[1] ==='fa-trash-alt'){
     e.target.parentElement.parentElement.remove();
+    let todosu = JSON.parse(localStorage.getItem('todos'));
+    todosu.splice(todosu.indexOf(e.target.parentElement.previousSibling.innerText),1);
+    localStorage.setItem('todos', JSON.stringify(todosu));   
 }else if (e.target.classList[1] ==='fa-check-circle'){
     e.target.classList.toggle('checked2');
     e.target.nextElementSibling.classList.toggle('checked') = ';'
@@ -125,19 +159,22 @@ if(e.target.classList[1] ==='fa-trash-alt'){
 }
 };
 
-// Adding current date 
-
+// Adding current date
+ 
 const d = new Date();
 const year = document.getElementById('year');
 const month = document.getElementById('month');
 const day = document.getElementById('day');
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-
 month.innerHTML = months[d.getMonth()];
 year.innerHTML = d.getUTCFullYear();
+
 // add 0 before (1 number) day  
-if(d.getDate().toString().length == 1){
-    day.innerHTML = '0' + d.getDate().toString(); 
-}else{
-    day.innerHTML = d.getDate().toString();
-};
+
+    if (d.getDate().toString().length == 1){
+
+        day.innerHTML = '0' + d.getDate().toString(); 
+
+    } else {
+        day.innerHTML = d.getDate().toString();
+    };
