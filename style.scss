@@ -198,64 +198,85 @@ body{
             align-items: center;
             justify-content: center;
             flex-direction: column;
+            .head{
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              width: 100%;
+              
 
-            h2{
+              h2{
                 font-size: 1.5rem;
                 font-weight: 500;
                 color: rgb(17, 19, 18);
-                margin-bottom: 1rem;
+              }
+              select{
+                padding: .25rem .2rem;
+                border: none;
+                outline: none;
+                text-align: center;
+                font-weight: 600;
+                background: $maincolor;
+                color: #fff;
+                transition: all .4s ease;
+                option{
+                  padding: .2rem;
+                }
+              }
             }
+
+              
             li{
-                border: 2px solid #fff;
-                margin-top: 2rem;
-                padding: .25rem;
-                width: 90%;
-                position: relative;
-                font-size: 1.5rem;
-                transition: .4s ease-in-out;
-                &:hover .fa-trash-alt{ 
-                    opacity: 1;
-                }
-                .fa-check-circle{
+            border: 2px solid #fff;
+            margin-top: 2rem;
+            padding: .25rem;
+            width: 90%;
+            position: relative;
+            font-size: 1.5rem;
+            transition: .4s ease-in-out;
+              &:hover .fa-trash-alt{ 
+                  opacity: 1;
+              }
+              .fa-check-circle{
+                  font-size: 1rem;
+                  padding: .5rem;
+                  cursor: pointer;
+                  &:hover{
+                      color: rgb(13, 190, 108);
+                      transition: .4s ease;
+                  }
+              }
+              .checked{
+                  text-decoration: line-through;
+                  opacity: .5;
+              }
+              .checked2{
+                  color:rgb(13, 190, 108) ;
+              }
+              span{
+                  font-size: 1rem;
+                  font-weight: 500;
+                  color:  rgb(6, 137, 181); 
+              }
+              .click{
+                  position: absolute;
+                  display: flex;
+                  right: 0;
+                  top: 50%;
+                  transform:translateY(-50%);
+                  i{
+                    padding:0 .25rem ;
+                    opacity: 0;
+                    color: rgb(202, 45, 45);
+                    transition: .4s ease;
                     font-size: 1rem;
-                    padding: .5rem;
                     cursor: pointer;
-                    &:hover{
-                        color: rgb(13, 190, 108);
-                        transition: .4s ease;
-                    }
-                }
-                .checked{
-                    text-decoration: line-through;
-                    opacity: .5;
-                }
-                .checked2{
-                    color:rgb(13, 190, 108) ;
-                }
-                span{
-                    font-size: 1rem;
-                    font-weight: 500;
-                    color:  rgb(6, 137, 181); 
-                }
-                .click{
-                    position: absolute;
-                    display: flex;
-                    right: 0;
-                    top: 50%;
-                    transform:translateY(-50%);
-                    i{
-                        padding:0 .25rem ;
-                        opacity: 0;
-                        color: rgb(202, 45, 45);
-                        transition: .4s ease;
-                        font-size: 1rem;
-                        cursor: pointer;
-                        &:hover .tasks li{
-                            border: 2px solid rgb(202, 45, 45);
-                            background: #000;
-                            transition:.4s ease;
-                        }
-                    }
+                      &:hover .tasks li{
+                          border: 2px solid rgb(202, 45, 45);
+                          background: #000;
+                          transition:.4s ease;
+                      }
+                  }     
                 }
             }
             .swing-out-top-bck {
@@ -266,6 +287,7 @@ body{
                 -webkit-animation: slide-out-elliptic-top-bck 0.7s ease-in both;
                         animation: slide-out-elliptic-top-bck 0.7s ease-in both;
             }
+            
         }
     }
 }
@@ -408,5 +430,8 @@ body{
   }
   
   
+  
+  
+
   
   
